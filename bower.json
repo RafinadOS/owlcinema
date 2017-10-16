@@ -1,0 +1,27 @@
+{
+  "name": "owl_cinema",
+  "description": "mobile app cinema",
+  "main": "index.js",
+  "authors": [
+    "Pavel Rafeev"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "js",
+    "html",
+    "css"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "babel": "^5.8.38",
+    "react": "^16.0.0"
+  },
+  "devDependencies": {
+    "babel": "^5.8.38"
+  }
+}
