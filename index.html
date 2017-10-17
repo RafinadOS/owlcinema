@@ -5,8 +5,90 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Document</title>
+	<script src="js/lib/react.development.js"></script>	
+	<script src="js/lib/react-dom.development.js"></script>
+	<script src="js/lib/browser.js"></script>
 </head>
 <body>
-	<div id="app"></div>
+
+	<div id="owlcinema"></div>
+
+
+	<!-- http://integration-wiki.www.cinemapark.ru/ -->
+
+	<script type="text/babel">
+
+
+		var Katalog = [
+			{
+				id: 1,
+				name: 'Люди X: Первый класс',
+				genre: 'приключения/фэнтези/боевик',
+				poster: '//st.kp.yandex.net/images/film_big/462358.jpg',
+				age_limit: '14'
+			},
+			{
+				id: 2,
+				name: '500 дней лета',
+				genre: 'мелодрамма/комедия',
+				poster: '//st.kp.yandex.net/images/film_iphone/iphone360_409372.jpg',
+				age_limit: '12'
+			},
+			{
+				id: 3,
+				name: 'Крым',
+				genre: 'драма/исторический',
+				poster: '//st.kp.yandex.net/images/film_big/984364.jpg',
+				age_limit: '16'
+			},
+			{
+				id: 4,
+				name: 'Первый мститель: противостояние',
+				genre: 'приключения/фэнтези/боевик',
+				poster: '//st.kp.yandex.net/images/film_big/822708.jpg',
+				age_limit: '16'
+			}
+		]
+
+		class OwlCinemaContact extends React.Component {
+			render() {
+				return (
+					<div>
+						<div>{this.props.name}</div>
+						<div>{this.props.genre}</div>
+						<div>{this.props.poster}</div>
+						<div>{this.props.age_limit}</div>
+					</div>
+				)
+			}
+		}
+
+		class OwlCinemaList extends React.Component {
+			render() {
+				return (
+					<div>
+						{
+							Katalog.map(function(el) {
+								return <OwlCinemaContact 
+									key={el.id} 
+									name={el.name} 
+									genre={el.genre} 
+									poster={el.poster} 
+									age_limit={el.age_limit} 
+								/>
+							})
+						}
+					</div>
+				)
+			}
+		}
+		
+		ReactDOM.render(
+			<OwlCinemaList />,
+			document.getElementById('owlcinema')
+		);
+	</script>
+
+	
 </body>
 </html>
