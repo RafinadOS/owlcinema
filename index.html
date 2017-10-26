@@ -64,20 +64,45 @@
 		}
 
 		class OwlCinemaList extends React.Component {
+
+			constructor(props, context) {
+
+				super(props, context);
+	
+				this.state = {
+					displayedKatalog: Katalog
+				}
+			}
+
+			handleSearch(event) {
+				console.log(event.target.value)
+				var searchQuery = event.target.value.toLowerCase();
+				var displayedKatalog = Katalog.filter(function(el) {
+					var searchValue = el.name.toLowerCase();
+
+					return searchValue.indexOf(searchQuery) !== -1;
+				})
+
+				console.log(displayedKatalog)
+			}
+
 			render() {
 				return (
 					<div>
-						{
-							Katalog.map(function(el) {
-								return <OwlCinemaContact 
-									key={el.id} 
-									name={el.name} 
-									genre={el.genre} 
-									poster={el.poster} 
-									age_limit={el.age_limit} 
-								/>
-							})
-						}
+						<input type="text" onChange={this.handleSearch} />
+						<div>
+							{
+								Katalog.map(function(el) {
+									return <OwlCinemaContact 
+										key={el.id} 
+										name={el.name} 
+										genre={el.genre} 
+										poster={el.poster} 
+										age_limit={el.age_limit} 
+									/>
+								})
+							}
+						</div>
 					</div>
 				)
 			}
